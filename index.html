@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz app</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div>
+    <h1>HTML CSS QUIZ</h1>
+    <p id="ques" class="me"></p>
+    <p id="option"></p>
+
+    </div>
+    <script>
+        var que = document.getElementById("ques")
+        var opt = document.getElementById("option")
+      
+        var questions = [
+        {
+        q :"Q1. HTML stands for?" ,
+        op: ["Hyper language", "Hyper text makup language ", "Hyper text programing language" , "Hyper Script language"],
+        correctAns : "Hyper text makup language "
+        },
+        {
+            q :"Q2. CSS stands for?" ,
+            op: ["Color style sheet", "Cascade Sheet style ", "Cascade style sheet" , "Cascading Style Sheet"],
+            correctAns : "Cascading Style Sheet"
+            },
+            {
+                q :"Q3. The link-tag goes inside?" ,
+                op: ["the title section", "the body section ", "the head section" , "None of the above"],
+                correctAns : "the head section" ,
+                },
+                {
+                    q: "Q4. What CSS defines in HTML?",
+                    op: ["How to send HTML elements", "how to save HTML elements", "how to display HTML elements" , "How to made HTMl elements"],
+                correctAns : "how to display HTML elements",
+                },
+                {
+                    q: "Q5. CSS is also created and maintained by the group of people within",
+                    op: ["W3D", "W3B", "W3A" , "W3C"],
+                correctAns : "W3C",
+                },
+                {
+                    q: "Q6. CSS1 is developed by W3C in ______?",
+                    op: ["1996", "1994", "1995" , "1997"],
+                correctAns : "1996",
+                },
+                {
+                    q: "Q7. CSS provided the basic styles such as",
+                    op: ["setting margins ", "specifying font and font styles", "applying colors" , "All of the above"],
+                correctAns : "All of the above",
+                },
+                {
+                    q: "Q8. Which property is used to set the width of an image border",
+                    op: ["width-of border", "img-width", "border-width img" , "border"],
+                correctAns : "border",
+                },
+                {
+                    q: "Q9. Which selector matches a element based on its class attribute",
+                    op: ["descendant selector", "Universal selector", "Class selector" , "Id selector"],
+                correctAns : "Class selector",
+                },
+                {
+                    q: "Q10. Which CSS framework is used create a responsive desgine?",
+                    op: ["Media-Query", "Bootstrap", "Units" , "django"],
+                correctAns : "Bootstrap",
+                },
+        ]
+        currentIndex = 0;
+
+        currentScore = 0;
+        function showQ(){
+            ques.innerHTML = questions[currentIndex].q;
+            option.innerHTML = "";
+            questions[currentIndex].op.forEach((val)=>{
+               var listElm= document.createElement("li");
+                listElm.innerHTML = val;
+                opt.appendChild(listElm);
+                listElm.addEventListener("click", ()=>
+                {
+                    checkAns(val)
+                currentIndex= (currentIndex+1);
+                 
+                showQ()
+               
+            })
+                
+                
+
+            })
+           
+            function checkAns(ans){
+                console.log (ans)
+                if(ans==questions[currentIndex].correctAns){
+                    currentScore= currentScore+1;
+                    console.log(currentScore)
+                    
+                }
+                else{
+                   
+                }
+                if(currentIndex== questions.length-1)
+                    {
+                        document.write("<h3>Your score is </h3>" , currentScore , "/" ,questions.length)
+                    }
+                    
+                   
+           
+             }
+             
+        }
+        showQ();
+    </script>
+</body>
+</html>
